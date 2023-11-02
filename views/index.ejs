@@ -1,65 +1,77 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eco-route-planner</title>
-  <link rel='stylesheet' href='/public/stylesheets/style.css' />
+  <link rel='stylesheet' href='stylesheets/style.css' />
 </head>
 
-<body class="container">
+<body>
+  <nav>
+    <div class="nav">
+      <div class='logo'>
+        <a href="/">
+          <img class src="/img/eco-route-planner-logo.png" width="40px" alt="LOGO">
+        </a>
+      </div>
+      <div>
+        Eco Route Planner
+      </div>
 
-  <div>
-    <form action="/" method="GET">
-      <h2>
-        Orign Location
-      </h2>
-  </div>
-  <div id="locationField">
-
-    <input id="originautocomplete" type="text" name="start" placeholder="Enter your start location "> </input>
-  </div>
-
-  <div>
-    <h2>
-      Destination Location
-    </h2>
-  </div>
-  <div id="locationField">
-    <input id="destinationautocomplete" type="text" name="destination"
-      placeholder="Enter your destination location "></input>
-  </div>
-  <br>
-  <div>
-    <button class="btn btn-success" type="submit">Find travel distance</button>
-
-  </div>
+    </div>
+    <div class="nav-line"></div>
+  </nav>
+  <main>
+  <!-- form -->
+  <form action="/" method="GET" class="form-container">
+    <input class="input-form" type="text" name="start" placeholder="Enter your start location "> </input>
+    <input class="input-form" type="text" name="destination" placeholder="Enter your destination location "></input>
+    
+    <button class="btn-enter" type="submit">Find travel distance</button>
+          
   </form>
-  <br>
-  <div>
-    <strong>Recommended Route Total Distance</strong>
+
+  <div class="container-output">
+    <% if (mapData) { %>
+      <div class="output" id="route">
+        <div> 
+          <p>Start: <%= mapData.origin_addresses[0] %></p> 
+        </div>
+        ->
+        <div>
+          <p>Destination: <%= mapData.destination_addresses[0] %></p> 
+        </div>
+      </div>
+      <div class="output walking">
+        <p>Walking Distance: <%= walkingData.rows[0].elements[0].distance.text %></p>
+        <p>Walking Duration: <%= walkingData.rows[0].elements[0].duration.text %></p>
+        <p>Estimated CO2 Emissions: 0 grams</p>
+      </div>
+      <div class="output biking">
+        <p>Biking Distance: <%= bikingData.rows[0].elements[0].distance.text %></p>
+        <p>Biking Duration: <%= bikingData.rows[0].elements[0].duration.text %></p>
+        <p>Estimated CO2 Emissions: 0 grams</p>
+      </div>
+      <div class="output transit">
+        <p>Transit Distance: <%= transitData.rows[0].elements[0].distance.text %></p>
+        <p>Transit Duration: <%= transitData.rows[0].elements[0].duration.text %></p>
+        <p>Estimated CO2 Emissions: <%= (parseFloat(transitData.rows[0].elements[0].distance.value) * 0.029).toFixed(2) %> grams</p>
+      </div>
+      <div class="output driving">
+        <p>Driving Distance: <%= mapData.rows[0].elements[0].distance.text %></p>
+        <p>Driving Duration: <%= mapData.rows[0].elements[0].duration.text %></p>
+        <p>Estimated CO2 Emissions: <%= (parseFloat(mapData.rows[0].elements[0].distance.value) * 0.17).toFixed(2) %> grams</p>
+      </div>
+    <% } else { %>
+      <p>Map data is not available.</p>
+    <% } %>
   </div>
-  <div id="outputRecommended"></div>
-  <div>
-    <strong>Total Distance</strong>  
-  </div>
-  <div>
-    <h1>Destination Address: <%= mapData.destination_addresses[0] %></h1>
-    <h1>Origin Address: <%= mapData.origin_addresses[0] %></h1>
-    <h1>Driving Distance: <%= mapData.rows[0].elements[0].distance.text %></h1>
-    <h1>Driving Duration: <%= mapData.rows[0].elements[0].duration.text %></h1>
-
-    <h1>Walking Distance: <%= walkingData.rows[0].elements[0].distance.text %></h1>
-    <h1>Walking Duration: <%= walkingData.rows[0].elements[0].duration.text %></h1>
-
-    <h1>Biking Distance: <%= bikingData.rows[0].elements[0].distance.text %></h1>
-    <h1>Biking Duration: <%= bikingData.rows[0].elements[0].duration.text %></h1>
-
-    <h1>Transit Distance: <%= transitData.rows[0].elements[0].distance.text %></h1>
-    <h1>Transit Duration: <%= transitData.rows[0].elements[0].duration.text %></h1>
-
-  </div>
-
-
+</main>
+<!-- Footer -->
+  <footer>
+   
+    <h3>Copyright 2023</h3>
+  </footer>
 </body>
-
 </html>

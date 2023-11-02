@@ -1,72 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Geo&family=Inter:wght@500;600&family=Noto+Sans&family=Poppins:wght@200&family=REM:wght@500&family=Shippori+Mincho+B1&display=swap');
+
+/* font-family: 'Geo', sans-serif;
+font-family: 'Inter', sans-serif;
+font-family: 'Noto Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'REM', sans-serif;
+font-family: 'Shippori Mincho B1', serif; */
+:root {
+  --white: #fff;
+  --light-white: #FCFFF4;
+  --green-6: #71814B;
+  --green-6: #96A043;
+  --green-5: #477C6B;
+  --green-4: #007F65;
+  --green-3: #11B041;
+  --green-2: #B0D93D;
+  --green-1: #5AC4AE; 
+  --yellow: #E4AB24;
+  --orange: #FF6B1C;
+  --dark: #00394F ;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: var(--light-white);
 }
-
-a {
-  color: #00B7FF;
-}
-
-
-
-
-#map {
-  height: 100%;
-}
-
-/* Optional: Makes the sample page fill the window. */
 
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Noto Sans', sans-serif;
 }
 
-#controls {
-  position: relative;
-  width: 480px;
+/* Nav */
+.nav{
+  margin: 1rem;
+  display:flex;
+  /* border: grey dotted; */
+  /* flex-direction: column; */
+  justify-content: flex-start;
+  height: 50px;
+  align-items: center;
 }
 
-#autocomplete {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 99%;
+.logo{
+   margin: 0.3rem;
 }
 
-.label {
-  text-align: right;
-  font-weight: bold;
-  width: 100px;
-  color: #303030;
+nav>div {
+  padding: 0.5rem;
+  font-size: 2rem;
+  margin: 10px;
+  color: var(--green-6);
+  /* border: grey dotted; */
 }
 
-#address {
-  border: 1px solid #000090;
-  background-color: #f0f0ff;
-  width: 480px;
-  padding-right: 2px;
+.nav-line {
+  margin-top: 0;
+  border-bottom: 3px solid #007F65; /* Replace #000 with your desired color */
+  margin-bottom: 1px; /* Adjust the margin as needed */
 }
 
-#address td {
-  font-size: 10pt;
+/* form */
+
+.form-container{
+  display: flex;
+  flex-direction:column;
+  justify-content: center; 
+  padding: 1.5rem;
+}
+.input-form{
+  margin: 0.5rem;
+  padding: 25px;
+  width:100%;
+  border-radius: 7px;
+  height: 40px;
+  text-align: center;
+  border: #D3D3D3 solid 2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 8px 0 rgba(0, 0, 0, 0.19);
+
+ 
 }
 
-.field {
-  width: 99%;
+input[type=text] {
+  font-size:18px;  
 }
 
-.slimField {
-  width: 80px;
+.btn-enter {
+  padding: 18px;
+  width:auto;
+  margin-top:10px;
+  text-align:center;
+  background: var(--green-6);
+  cursor:pointer;
+  border-radius: 5px;
+  font-size: 18px;
+  color: var(--white);
+  border-style: none;
+  border: #D3D3D3 solid 2px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 4px 0 rgba(0, 0, 0, 0.19);
 }
 
-.wideField {
-  width: 200px;
+input.error {
+  border: 1px solid red;
 }
 
-#locationField {
-  height: 20px;
-  margin-bottom: 2px;
-  border: grey solid;
+.container-output{
+  /* width: 80%; */
+  margin: 2rem;
+  padding: 1rem;
+  border-radius: 10px;
+   background-color:var(--white);
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column; 
+  color:var(--dark);
+
+
+}
+#route{
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center; 
+  font-size: 20px;
+}
+#route > div{
+  margin: 0.5rem;
+}
+
+.output > p{
+  margin: 0.5rem;
+  font-size: 20px;
+}
+
+.output{
+ 
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  font-size: 18px;
+  margin: 0 1rem 0 1rem;
+  border-bottom: 3px solid #71814B; /* Replace #000 with your desired color */
+  margin-bottom: 1px; /* Adjust the margin as needed */
+
+}
+
+/* footer */
+
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--green-6);
+  color: #FCFFF4;
+  text-align: center;
+  padding: 10px 0;
 }
