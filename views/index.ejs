@@ -57,6 +57,13 @@
     <h1>Transit Distance: <%= transitData.rows[0].elements[0].distance.text %></h1>
     <h1>Transit Duration: <%= transitData.rows[0].elements[0].duration.text %></h1>
 
+    <h1>Transit Emojis: <%= emojiTransitRoute %></h1>
+
+    <% for (let i = 0; i<uniqueTransitModes.length ; i++) {%>
+      <h1>Transit Mode: <%= uniqueTransitModes %></h1>
+      <h1>Transit Distance: <%= transitDistances %> m</h1>
+    <% } %>
+
   </div>
 
 
